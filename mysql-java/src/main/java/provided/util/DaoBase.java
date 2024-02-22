@@ -33,7 +33,7 @@ public abstract class DaoBase {
    * @param conn The connection on which to start the transaction.
    * @throws SQLException Thrown if an error occurs starting the transaction.
    */
-  protected void startTransaction(Connection conn) throws SQLException {
+  protected static void startTransaction(Connection conn) throws SQLException {
     conn.setAutoCommit(false);
   }
 
@@ -53,7 +53,7 @@ public abstract class DaoBase {
    * @param conn The connection on which to roll back the transaction.
    * @throws SQLException Thrown if an error occurs rolling back the transaction.
    */
-  protected void rollbackTransaction(Connection conn) throws SQLException {
+  protected static void rollbackTransaction(Connection conn) throws SQLException {
     conn.rollback();
   }
 
@@ -230,7 +230,7 @@ public abstract class DaoBase {
    * @param classType The actual class type of the object to create.
    * @return A populated class.
    */
-  protected <T> T extract(ResultSet rs, Class<T> classType) {
+  protected static <T> T extract(ResultSet rs, Class<T> classType) {
     try {
       /* Obtain the constructor and create an object of the correct type. */
       Constructor<T> con = classType.getConstructor();
@@ -292,7 +292,7 @@ public abstract class DaoBase {
    * @param identifier The name in camel case to convert.
    * @return The name converted to snake case.
    */
-  private String camelCaseToSnakeCase(String identifier) {
+  private static String camelCaseToSnakeCase(String identifier) {
     StringBuilder nameBuilder = new StringBuilder();
 
     for(char ch : identifier.toCharArray()) {

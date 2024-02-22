@@ -86,6 +86,14 @@ public class ProjectsApp {
     Project dbProject = projectService.addProject(project);
     System.out.println("You have successfully created project: " + dbProject);
   }
+  
+  private void listProjects() {
+	  List<Project> projects = projectService.fetchAllProjects();
+	  System.out.println("\nProjects:");
+	  projects.forEach (project -> System.out .println(" " + project.getProjectId()
+	  + ": " + project.getProjectName()));
+	  }
+
 
   /**
    * Gets the user's input from the console and converts it to a BigDecimal.

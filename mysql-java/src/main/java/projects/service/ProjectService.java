@@ -4,6 +4,7 @@
 package projects.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import projects.dao.ProjectDao;
 import projects.entity.Project;
@@ -35,5 +36,11 @@ public List<Project> fetchAllProjects() {
 	
 }
 
-
+public Project fetchProjectById(Integer projectId) {
+    return projectDao.fetchProjectById(projectId)
+        .orElseThrow(() -> new NoSuchElementException(
+            "Project with project id=" + projectId + " does not exist"));
 }
+
+
+}// end of class ProjectService

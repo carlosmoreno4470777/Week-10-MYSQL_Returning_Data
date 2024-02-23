@@ -127,6 +127,7 @@ public Optional<Project> fetchProjectById(Integer projectId) {
           }
         }
 
+      ///ZZZZZ   The object is null therefore the actions in the if statement will not exec
         if (Objects.nonNull(project)) {
 
         	project.getMaterials().addAll(fetchMaterialsForProject (conn, projectId)); 
